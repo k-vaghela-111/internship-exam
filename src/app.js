@@ -20,4 +20,9 @@ import authRouter from "./routes/auth.routes.js";
 
 app.use("/api/v1/auth", authRouter);
 
+// event routes
+import eventRouter from "./routes/event.routes.js";
+
+app.use("/api/v1/events", eventRouter);
+
 export default app;
