@@ -1,10 +1,24 @@
+import { Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import EventDetails from "./pages/EventDetails";
+import CreateEvent from "./pages/CreateEvent";
+import MyBookings from "./pages/MyBookings";
+import NotFound from "./pages/NotFound";
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900">
-      <h1 className="text-5xl font-bold text-cyan-400">
-        Event Booking App 
-      </h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/events/:id" element={<EventDetails />} />
+      <Route path="/create-event" element={<CreateEvent />} />
+      <Route path="/my-bookings" element={<MyBookings />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
