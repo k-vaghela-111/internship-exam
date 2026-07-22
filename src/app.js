@@ -25,4 +25,9 @@ import eventRouter from "./routes/event.routes.js";
 
 app.use("/api/v1/events", eventRouter);
 
+// booking routes
+import bookingRouter from "./routes/booking.routes.js";
+
+app.use("/api/v1/bookings", bookingRouter);
+
 export default app;

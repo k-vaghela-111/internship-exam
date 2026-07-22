@@ -62,8 +62,45 @@ const getEventById = asyncHandler(async (req, res) => {
     );
 });
 
+const updateEvent = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+
+    const event = await Event.findByIdAndUpdate(
+        id,
+        req.body,
+        {
+            new: true,
+            runValidators: true,
+        }
+    );
+
+    if (!event) {
+        throw new ApiError(404, "Event not found");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(200, event, "Event updated successfully")
+    );
+});
+
+const deleteEvent = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+
+    const event = await Event.findByIdAndDelete(id);
+
+    if (!event) {
+        throw new ApiError(404, "Event not found");
+    }
+
+    return res.status(200).json(
+        new ApiResponse(200, {}, "Event deleted successfully")
+    );
+});
+
 export {
     createEvent,
     getAllEvents,
     getEventById,
+    updateEvent,
+    deleteEvent
 };

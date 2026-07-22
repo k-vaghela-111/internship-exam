@@ -2,13 +2,13 @@ import mongoose, { Schema } from "mongoose";
 
 const bookingSchema = new Schema(
     {
-        user: {
+        userId: {
             type: Schema.Types.ObjectId,
             ref: "User",
             required: true,
         },
 
-        event: {
+        eventId: {
             type: Schema.Types.ObjectId,
             ref: "Event",
             required: true,
@@ -22,14 +22,14 @@ const bookingSchema = new Schema(
 
         paymentMethod: {
             type: String,
-            required: true,
             enum: ["UPI", "Card", "Net Banking", "Wallet"],
+            required: true,
         },
 
         status: {
             type: String,
-            enum: ["Booked", "Cancelled"],
-            default: "Booked",
+            enum: ["Confirmed", "Cancelled"],
+            default: "Confirmed",
         },
     },
     {

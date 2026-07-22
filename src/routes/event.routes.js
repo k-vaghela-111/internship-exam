@@ -3,6 +3,8 @@ import {
     createEvent,
     getAllEvents,
     getEventById,
+    updateEvent,
+    deleteEvent
 } from "../controllers/event.controller.js";
 
 const router = Router();
@@ -12,6 +14,8 @@ router.route("/")
     .get(getAllEvents);
 
 router.route("/:id")
-    .get(getEventById);
+    .get(getEventById)
+    .patch(updateEvent)
+    .delete(deleteEvent);
 
 export default router;
